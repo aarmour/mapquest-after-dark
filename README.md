@@ -1,4 +1,4 @@
-# MapquestAfterDark
+# MapQuest After Dark
 
 July 2017 MapQuest Code Hack Day project.
 
