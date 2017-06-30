@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'app/scss/reset.scss';
+@import 'app/scss/md-theme.scss';
+@import 'app/scss/box-model.scss';
+@import 'app/scss/app.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -ms-overflow-style: none;
+  overflow: auto;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}

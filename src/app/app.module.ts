@@ -1,4 +1,7 @@
+import 'hammerjs';
+
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { ComponentsModule } from './components/components.module';
@@ -14,6 +17,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CoreModule.forRoot(),
     StateModule.forRoot(),
     ComponentsModule,
