@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { ComponentsModule } from './components/components.module';
 import { CoreModule } from './core/core.module';
 import { StateModule } from './state/state.module';
 
@@ -15,6 +16,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     CoreModule.forRoot(),
     StateModule.forRoot(),
+    ComponentsModule,
     AppRoutingModule
   ],
   providers: [],
