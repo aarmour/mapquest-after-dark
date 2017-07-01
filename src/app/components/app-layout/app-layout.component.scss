@@ -1,5 +1,4 @@
-$mad-app-layout-top-toolbar-height: 54px;
-$mad-app-layout-bottom-toolbar-height: 64px;
+$mad-app-layout-toolbar-height: 56px;
 
 :host {
   display: flex;
@@ -8,7 +7,7 @@ $mad-app-layout-bottom-toolbar-height: 64px;
 }
 
 .top-toolbar {
-  height: $mad-app-layout-top-toolbar-height;
+  height: $mad-app-layout-toolbar-height;
 }
 
 .main {
@@ -17,5 +16,5 @@ $mad-app-layout-bottom-toolbar-height: 64px;
 }
 
 .bottom-toolbar {
-  height: $mad-app-layout-bottom-toolbar-height;
+  height: $mad-app-layout-toolbar-height;
 }
