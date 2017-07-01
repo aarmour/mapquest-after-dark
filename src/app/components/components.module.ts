@@ -14,6 +14,8 @@ import {
   MdToolbarModule
 } from '@angular/material';
 
+import { AppLayoutComponent } from './app-layout/app-layout.component';
+
 const mdModules = [
   MdButtonModule,
   MdCardModule,
@@ -34,8 +36,9 @@ const mdModules = [
     ...mdModules
   ],
   exports: [
-    ...mdModules
+    ...mdModules,
+    AppLayoutComponent
   ],
-  declarations: []
+  declarations: [AppLayoutComponent]
 })
 export class ComponentsModule { }

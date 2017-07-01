@@ -1,0 +1,21 @@
+$mad-app-layout-top-toolbar-height: 54px;
+$mad-app-layout-bottom-toolbar-height: 64px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.top-toolbar {
+  height: $mad-app-layout-top-toolbar-height;
+}
+
+.main {
+  flex: 1;
+  overflow: hidden;
+}
+
+.bottom-toolbar {
+  height: $mad-app-layout-bottom-toolbar-height;
+}
