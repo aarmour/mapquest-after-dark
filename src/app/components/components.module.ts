@@ -5,6 +5,7 @@ import {
   MdCardModule,
   MdCheckboxModule,
   MdDatepickerModule,
+  MdIconModule,
   MdInputModule,
   MdMenuModule,
   MdNativeDateModule,
@@ -14,13 +15,15 @@ import {
   MdToolbarModule
 } from '@angular/material';
 
-import { AppLayoutComponent } from './app-layout/app-layout.component';
+import { AppLayoutComponent, AppLayoutBottomToolbarComponent } from './app-layout/app-layout.component';
+import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
 
 const mdModules = [
   MdButtonModule,
   MdCardModule,
   MdCheckboxModule,
   MdDatepickerModule,
+  MdIconModule,
   MdInputModule,
   MdMenuModule,
   MdNativeDateModule,
@@ -37,8 +40,14 @@ const mdModules = [
   ],
   exports: [
     ...mdModules,
-    AppLayoutComponent
+    AppLayoutComponent,
+    AppLayoutBottomToolbarComponent,
+    AppToolbarComponent
   ],
-  declarations: [AppLayoutComponent]
+  declarations: [
+    AppLayoutComponent,
+    AppLayoutBottomToolbarComponent,
+    AppToolbarComponent
+  ]
 })
 export class ComponentsModule { }
