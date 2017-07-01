@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'more',
     loadChildren: './+more/more.module#MoreModule'
+  },
+  {
+    path: 'notifications',
+    loadChildren: './+notifications/notifications.module#NotificationsModule'
   }
 ];
 
