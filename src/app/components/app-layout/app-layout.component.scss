@@ -6,15 +6,11 @@ $mad-app-layout-toolbar-height: 56px;
   height: 100%;
 }
 
-.top-toolbar {
-  height: $mad-app-layout-toolbar-height;
-}
-
 .main {
   flex: 1;
   overflow: hidden;
 }
 
-.bottom-toolbar {
+.toolbar {
   height: $mad-app-layout-toolbar-height;
 }

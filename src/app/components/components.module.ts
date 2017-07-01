@@ -16,8 +16,10 @@ import {
   MdToolbarModule
 } from '@angular/material';
 
-import { AppLayoutComponent, AppLayoutBottomToolbarComponent } from './app-layout/app-layout.component';
+import { AppLayoutComponent, AppLayoutToolbarComponent } from './app-layout/app-layout.component';
 import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
+import { BackToolbarButtonComponent } from './back-toolbar-button/back-toolbar-button.component';
+import { NotificationsToolbarButtonComponent } from './notifications-toolbar-button/notifications-toolbar-button.component';
 
 const mdModules = [
   MdButtonModule,
@@ -43,13 +45,17 @@ const mdModules = [
   exports: [
     ...mdModules,
     AppLayoutComponent,
-    AppLayoutBottomToolbarComponent,
-    AppToolbarComponent
+    AppLayoutToolbarComponent,
+    AppToolbarComponent,
+    BackToolbarButtonComponent,
+    NotificationsToolbarButtonComponent,
   ],
   declarations: [
     AppLayoutComponent,
-    AppLayoutBottomToolbarComponent,
-    AppToolbarComponent
+    AppLayoutToolbarComponent,
+    AppToolbarComponent,
+    BackToolbarButtonComponent,
+    NotificationsToolbarButtonComponent,
   ]
 })
 export class ComponentsModule { }

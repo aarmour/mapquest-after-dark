@@ -1,21 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'mad-app-layout-bottom-toolbar',
+  selector: 'mad-app-layout-toolbar',
   template: '<ng-content></ng-content>'
 })
-export class AppLayoutBottomToolbarComponent {}
+export class AppLayoutToolbarComponent { }
 
 @Component({
   selector: 'mad-app-layout',
   templateUrl: './app-layout.component.html',
   styleUrls: ['./app-layout.component.scss']
 })
-export class AppLayoutComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class AppLayoutComponent { }
