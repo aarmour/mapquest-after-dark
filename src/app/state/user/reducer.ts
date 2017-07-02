@@ -9,12 +9,16 @@ const initialState: State = {
 
 export function reducer(state: State = initialState, action: user.Actions): State {
   switch (action.type) {
+    case user.AUTH_INITIALIZED: {
+      return Object.assign({ }, state, { initialized: true });
+    }
+
     case user.LOGIN_SUCCESS: {
-      return Object.assign({ }, state, { initialized: true, isAuthenticated: true, profile: (action as user.LoginSuccessAction).payload });
+      return Object.assign({ }, state, { isAuthenticated: true, profile: (action as user.LoginSuccessAction).payload });
     }
 
     case user.LOGOUT_SUCCESS: {
-      return Object.assign({ }, state, { initialized: true, isAuthenticated: false, profile: null });
+      return Object.assign({ }, state, { isAuthenticated: false, profile: null });
     }
 
     default: {

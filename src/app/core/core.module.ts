@@ -1,6 +1,8 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { AuthGuard } from './auth.guard';
+
 @NgModule({
   imports: [
     CommonModule
@@ -12,6 +14,7 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
+        AuthGuard
       ]
     };
   }

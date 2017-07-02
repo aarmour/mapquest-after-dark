@@ -14,10 +14,15 @@ export interface UserInfo {
   uid: string;
 }
 
+export const AUTH_INITIALIZED = type('[User] Auth Initialized');
 export const LOGIN = type('[User] Login');
 export const LOGIN_SUCCESS = type('[User] Login Success');
 export const LOGOUT = type('[User] Logout');
 export const LOGOUT_SUCCESS = type('[User] Logout Success');
+
+export class AuthInitializedAction implements Action {
+  type = AUTH_INITIALIZED;
+}
 
 export class LoginAction implements Action {
   type = LOGIN;

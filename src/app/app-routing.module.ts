@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from './core/auth.guard';
+
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: './+explore/explore.module#ExploreModule'
+    path: 'explore',
+    loadChildren: './+explore/explore.module#ExploreModule',
+    canLoad: [AuthGuard]
   },
   {
     path: 'friends',
-    loadChildren: './+friends/friends.module#FriendsModule'
+    loadChildren: './+friends/friends.module#FriendsModule',
+    canLoad: [AuthGuard]
   },
   {
     path: 'go',
-    loadChildren: './+go/go.module#GoModule'
+    loadChildren: './+go/go.module#GoModule',
+    canLoad: [AuthGuard]
   },
   {
     path: 'login',
@@ -20,11 +25,18 @@ const routes: Routes = [
   },
   {
     path: 'more',
-    loadChildren: './+more/more.module#MoreModule'
+    loadChildren: './+more/more.module#MoreModule',
+    canLoad: [AuthGuard]
   },
   {
     path: 'notifications',
-    loadChildren: './+notifications/notifications.module#NotificationsModule'
+    loadChildren: './+notifications/notifications.module#NotificationsModule',
+    canLoad: [AuthGuard]
+  },
+  {
+    path: '',
+    redirectTo: 'explore',
+    pathMatch: 'full'
   }
 ];
 
