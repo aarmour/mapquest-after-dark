@@ -34,6 +34,11 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'user',
+    loadChildren: './+user/user.module#UserModule',
+    canLoad: [AuthGuard]
+  },
+  {
     path: '',
     redirectTo: 'explore',
     pathMatch: 'full'
