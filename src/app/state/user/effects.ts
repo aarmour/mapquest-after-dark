@@ -45,10 +45,10 @@ export class UserEffects {
     this.afAuth.authState
       .take(1)
       .subscribe((firebaseUser: firebase.User) => {
-        this.store.dispatch(new user.AuthInitializedAction());
         if (firebaseUser) {
           this.store.dispatch(new user.LoginSuccessAction(this.getPayload(firebaseUser)));
         }
+        this.store.dispatch(new user.AuthInitializedAction());
       });
   }
 
