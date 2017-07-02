@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: './+go/go.module#GoModule'
   },
   {
+    path: 'login',
+    loadChildren: './+login/login.module#LoginModule'
+  },
+  {
     path: 'more',
     loadChildren: './+more/more.module#MoreModule'
   },

@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  background: black;
+}
+
+.login {
+
+  button span {
+    padding-left: 30px;
+
+    background: url(/assets/images/google_logo.svg) no-repeat;
+    font-size: 1.175em;
+    font-weight: 400;
+  }
+}
