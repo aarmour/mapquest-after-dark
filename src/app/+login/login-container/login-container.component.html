@@ -1,5 +1,11 @@
-<div class="login">
-  <button md-raised-button>
-    <span>Sign in with Google</span>
+<div>
+  <button *ngIf="isAuthenticated | async; else anonymous" md-raised-button (click)="logout()">
+    <span>Sign out</span>
   </button>
+
+  <ng-template #anonymous>
+    <button class="google" md-raised-button (click)="login()">
+      <span>Sign in with Google</span>
+    </button>
+  </ng-template>
 </div>

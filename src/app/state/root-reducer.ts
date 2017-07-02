@@ -4,12 +4,14 @@ import { ActionReducer, combineReducers } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { createSelector } from 'reselect';
 
-import { State } from './state';
-
 import { environment } from '../../environments/environment';
 
+import { State } from './state';
+import { reducer as userReducer } from './user/reducer';
+
 const reducers = {
-  router: routerReducer
+  router: routerReducer,
+  user: userReducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);

@@ -8,13 +8,10 @@
   background: black;
 }
 
-.login {
+button.google span {
+  padding-left: 30px;
 
-  button span {
-    padding-left: 30px;
-
-    background: url(/assets/images/google_logo.svg) no-repeat;
-    font-size: 1.175em;
-    font-weight: 400;
-  }
+  background: url(/assets/images/google_logo.svg) no-repeat;
+  font-size: 1.175em;
+  font-weight: 400;
 }
