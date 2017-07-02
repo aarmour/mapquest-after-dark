@@ -1,4 +1,18 @@
-md-toolbar {
-  color: #a5cc00;
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   background-color: black;
+}
+
+md-nav-list,
+md-list-item,
+md-toolbar {
+  color: #a5cc00 !important;
+  background-color: black;
+}
+
+md-toolbar {
+  border-bottom: 1px solid;
 }
