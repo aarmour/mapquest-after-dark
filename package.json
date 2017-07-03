@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build --prod --base-href \"https://aarmour.github.io/mapquest-after-dark/\" && angular-cli-ghpages"
   },
   "private": true,
   "dependencies": {
@@ -51,6 +52,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "@types/ramda": "^0.24.1",
+    "angular-cli-ghpages": "^0.5.1",
     "codelyzer": "~3.0.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
