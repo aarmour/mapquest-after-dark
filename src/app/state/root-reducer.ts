@@ -7,10 +7,12 @@ import { createSelector } from 'reselect';
 import { environment } from '../../environments/environment';
 
 import { State } from './state';
+import { reducer as exploreReducer } from './explore/reducer';
 import { reducer as geolocationReducer } from './geolocation/reducer';
 import { reducer as userReducer } from './user/reducer';
 
 const reducers = {
+  explore: exploreReducer,
   geolocation: geolocationReducer,
   router: routerReducer,
   user: userReducer

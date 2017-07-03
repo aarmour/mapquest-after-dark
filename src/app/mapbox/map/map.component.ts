@@ -11,6 +11,8 @@ import {
   forwardRef
 } from '@angular/core';
 
+import { equals } from 'ramda';
+
 import { MapboxService } from '../mapbox.service';
 import { ControlComponent } from '../control';
 import { LayerComponent } from './layer.component';
@@ -52,7 +54,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
     }
 
     if ('center' in changes || 'zoom' in changes) {
-      if (this.extentHasChanged()) {
+      if (this.extentHasChanged({ center: this.center, zoom: this.zoom }, { center: this.map.getCenter(), zoom: this.map.getZoom() })) {
         this.map.flyTo({
           center: this.center as mapboxgl.LngLat,
           zoom: this.zoom
@@ -89,11 +91,8 @@ export class MapComponent implements AfterViewInit, OnChanges {
     children.forEach((child) => child.mbSetMap(this.map));
   }
 
-  private extentHasChanged() {
-    const { center, zoom } = this;
-    const currentCenter = this.map.getCenter();
-    const currentZoom = this.map.getZoom();
-    return (center !== currentCenter || zoom !== currentZoom);
+  private extentHasChanged(oldExtent, newExtent) {
+    return !equals(oldExtent, newExtent);
   }
 
 }
