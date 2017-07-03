@@ -1,13 +1,15 @@
 import { EventEmitter, Injectable, Inject } from '@angular/core';
 
 const createId = require('hat');
-const mapbox = require('mapbox-gl/dist/mapbox-gl');
+import { Map, Marker, NavigationControl } from './mapbox';
+
+declare var mapboxgl;
 
 @Injectable()
 export class MapboxService {
 
   constructor(@Inject('MAPBOX_KEY') private accessToken: string) {
-    mapbox.accessToken = accessToken;
+    mapboxgl.accessToken = accessToken;
   }
 
   bindToOutputs(map: any, outputs: Array<Array<any>>) {
@@ -21,15 +23,15 @@ export class MapboxService {
   }
 
   map(options: Object): mapboxgl.Map {
-    return new mapbox.Map(options);
+    return new Map(options);
   }
 
   navigationControl(): mapboxgl.Control {
-    return new mapbox.NavigationControl();
+    return new NavigationControl();
   }
 
   marker(el: any, options?: any): mapboxgl.Marker {
-    return new mapbox.Marker(el, options);
+    return new Marker(el, options);
   }
 
 }
