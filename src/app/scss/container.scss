@@ -4,3 +4,9 @@ body {
   padding: 0;
   height: 100%;
 }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -ms-overflow-style: none;
+  overflow: auto;
+}

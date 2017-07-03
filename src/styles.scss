@@ -1,23 +1,16 @@
+/* ==========================================================================
+   Third-party imports
+   ========================================================================== */
+
+@import '~mapbox-gl/dist/mapbox-gl.css';
+
+/* ==========================================================================
+   App imports
+   ========================================================================== */
+
 @import 'app/scss/reset.scss';
 @import 'app/scss/md-theme.scss';
 @import 'app/scss/md-custom.scss';
 @import 'app/scss/box-model.scss';
 @import 'app/scss/container.scss';
 @import 'app/scss/type.scss';
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  -webkit-font-smoothing: antialiased;
-  -ms-overflow-style: none;
-  overflow: auto;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
