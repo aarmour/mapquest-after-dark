@@ -28,8 +28,8 @@ import { SourceComponent } from '../source';
 })
 export class MapComponent implements AfterViewInit, OnChanges {
 
-  private id: string;
-  private map: mapboxgl.Map;
+  id: string;
+  map: mapboxgl.Map;
 
   @Input('mb-style') style = 'mapbox://styles/mapbox/light-v9';
   @Input() center: { lng: number, lat: number } = { lng: 0, lat: 0};
