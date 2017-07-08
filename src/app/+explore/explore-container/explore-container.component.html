@@ -5,4 +5,9 @@
   <div class="toolbar-spacer"></div>
   <mad-notifications-toolbar-button></mad-notifications-toolbar-button>
 </md-toolbar>
-<mb-map mb-style="mapbox://styles/mapbox/dark-v9" [center]="mapCenter | async" [zoom]="mapZoom | async" (moveend)="onMapMoveend($event)"></mb-map>
+<mb-map mb-style="mapbox://styles/mapbox/dark-v9" [center]="mapCenter | async" [zoom]="mapZoom | async" (moveend)="onMapMoveend($event)">
+  <mb-marker
+    [lngLat]="geolocationPositionLngLat | async"
+    [element]="geolocationMarker"
+  ></mb-marker>
+</mb-map>
