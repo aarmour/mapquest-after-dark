@@ -8,6 +8,7 @@ import { ExploreRoutingModule } from './explore-routing.module';
 import { ExploreContainerComponent } from './explore-container/explore-container.component';
 import { LayerSelectionMenuComponent } from './layer-selection-menu/layer-selection-menu.component';
 import { LayerDialogComponent } from './layer-dialog/layer-dialog.component';
+import { MapMarkerElementFactoryService } from './map-marker-element-factory.service';
 
 @NgModule({
   imports: [
@@ -20,6 +21,9 @@ import { LayerDialogComponent } from './layer-dialog/layer-dialog.component';
     ExploreContainerComponent,
     LayerDialogComponent,
     LayerSelectionMenuComponent,
+  ],
+  providers: [
+    MapMarkerElementFactoryService
   ],
   entryComponents: [
     LayerDialogComponent
