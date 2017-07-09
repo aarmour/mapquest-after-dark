@@ -9,7 +9,7 @@ export class MapMarkerElementFactoryService {
   createGeolocationMarker(): ElementRef {
     const element = document.createElement('div');
     element.classList.add('mad-geolocation-marker');
-    element.style.backgroundColor = '#a5cc00';
+    element.style.backgroundColor = 'rgba(165, 204, 0, 0.8)';
     element.style.borderRadius = '50%';
     element.style.width = '20px';
     element.style.height = '20px';
