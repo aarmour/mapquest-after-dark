@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  background-color: black;
+  color: #a5cc00;
+}
+
+md-toolbar {
+  color: #a5cc00 !important;
+  background-color: black;
+  border-bottom: 1px solid;
+}
+
+.profile {
+  display: flex;
+  padding: 15px;
+
+  [mad-avatar] {
+    margin-right: 15px;
+  }
+}

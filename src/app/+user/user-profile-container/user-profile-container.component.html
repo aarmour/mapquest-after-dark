@@ -1,3 +1,10 @@
-<p>
-  user-profile-container works!
-</p>
+<md-toolbar>
+  <mad-back-toolbar-button text="More" link="/more"></mad-back-toolbar-button>
+</md-toolbar>
+<div class="profile" *ngIf="userProfile | async; let profile">
+  <img [src]="profile.photoURL" mad-avatar>
+  <div>
+    <div class="title">{{profile.displayName}}</div>
+    <div class="sub-title">{{profile.email}}</div>
+  </div>
+</div>
