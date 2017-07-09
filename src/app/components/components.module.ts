@@ -23,6 +23,7 @@ import { AppLayoutComponent, AppLayoutToolbarComponent } from './app-layout/app-
 import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
 import { BackToolbarButtonComponent } from './back-toolbar-button/back-toolbar-button.component';
 import { NotificationsToolbarButtonComponent } from './notifications-toolbar-button/notifications-toolbar-button.component';
+import { AvatarDirective } from './avatar.directive';
 
 const mdModules = [
   MdButtonModule,
@@ -53,6 +54,7 @@ const mdModules = [
     AppLayoutComponent,
     AppLayoutToolbarComponent,
     AppToolbarComponent,
+    AvatarDirective,
     BackToolbarButtonComponent,
     NotificationsToolbarButtonComponent,
   ],
@@ -60,6 +62,7 @@ const mdModules = [
     AppLayoutComponent,
     AppLayoutToolbarComponent,
     AppToolbarComponent,
+    AvatarDirective,
     BackToolbarButtonComponent,
     NotificationsToolbarButtonComponent,
   ]
