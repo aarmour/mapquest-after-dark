@@ -3,12 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { AuthGuard } from './auth.guard';
 import { GeolocationService } from './geolocation.service';
+import { UserService } from './user.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: []
+  declarations: [],
+  providers: [
+    UserService
+  ]
 })
 export class CoreModule {
   static forRoot(): ModuleWithProviders {
