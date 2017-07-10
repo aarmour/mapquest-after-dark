@@ -1,3 +1,24 @@
 <md-toolbar>
   <mad-back-toolbar-button text="Explore"></mad-back-toolbar-button>
 </md-toolbar>
+
+<ul class="friends-list">
+  <li *ngFor="let friend of mockFriends" class="friend">
+    <span class="friend-info">
+      <img mad-avatar [src]="friend.avatar" class="friend-avatar">
+      <p>{{friend.name}}</p>
+    </span>
+    <span class="friend-check">
+      <md-checkbox color="primary"></md-checkbox>
+    </span>
+  </li>
+</ul>
+
+<div class="share-with-all">
+  <md-checkbox color="primary"></md-checkbox>
+  <span class="label">Share location with everyone</span>
+</div>
+
+<div class="share-container">
+  <button md-fab class="share-button"> Start </button>
+</div>

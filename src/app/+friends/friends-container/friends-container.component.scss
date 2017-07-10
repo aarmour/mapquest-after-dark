@@ -11,3 +11,55 @@ md-toolbar {
   background-color: black;
   border-bottom: 1px solid;
 }
+
+md-checkbox {
+  background: white !important;
+  position: relative;
+}
+
+.friends-list {
+  color: white;
+  list-style-type: none;
+  padding: 0px;
+  margin-top: 0px;
+}
+
+.friend {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #a5cc00;
+  margin-top: 10px;
+}
+
+.friend-avatar {
+  margin-right: 10px;
+}
+
+.friend-check {
+  position: relative;
+  height: 20px;
+  top: 15px;
+  margin-right: 20px;
+}
+
+.friend-info {
+  margin-left: 20px;
+  display: inline-flex;
+}
+
+.share-with-all {
+  margin-left: 20px;
+
+  .label {
+    color: white;
+  }
+}
+
+.share-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.share-button {
+  background-color: #a5cc00;
+}
