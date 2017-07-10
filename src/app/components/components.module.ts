@@ -21,9 +21,10 @@ import {
 
 import { AppLayoutComponent, AppLayoutToolbarComponent } from './app-layout/app-layout.component';
 import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
+import { AvatarDirective } from './avatar.directive';
 import { BackToolbarButtonComponent } from './back-toolbar-button/back-toolbar-button.component';
 import { NotificationsToolbarButtonComponent } from './notifications-toolbar-button/notifications-toolbar-button.component';
-import { AvatarDirective } from './avatar.directive';
+import { PoiDetailsComponent } from './poi-details/poi-details.component';
 
 const mdModules = [
   MdButtonModule,
@@ -57,6 +58,7 @@ const mdModules = [
     AvatarDirective,
     BackToolbarButtonComponent,
     NotificationsToolbarButtonComponent,
+    PoiDetailsComponent,
   ],
   declarations: [
     AppLayoutComponent,
@@ -65,6 +67,7 @@ const mdModules = [
     AvatarDirective,
     BackToolbarButtonComponent,
     NotificationsToolbarButtonComponent,
+    PoiDetailsComponent,
   ]
 })
 export class ComponentsModule { }

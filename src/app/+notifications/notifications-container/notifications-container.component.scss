@@ -1,4 +1,21 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  background-color: black;
+}
+
 md-toolbar {
   color: #a5cc00;
   background-color: black;
+  border-bottom: 1px solid;
+}
+
+.notifications > p {
+  padding: 20px;
+
+  color: #a0a0a0;
+  font-size: 1.6em;
+  text-align: center;
 }
