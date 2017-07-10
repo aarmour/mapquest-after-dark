@@ -1,3 +1,5 @@
+import { compose, head, join, juxt, tail, toUpper} from 'ramda';
+
 /**
  * This function coerces a string into a string literal type.
  * Using tagged union types in TypeScript 2.0, this enables
@@ -19,3 +21,8 @@ export function type<T>(label: T | ''): T {
 
   return <T>label;
 }
+
+export const capitalize = compose(
+    join(''),
+    juxt([compose(toUpper, head), tail])
+);

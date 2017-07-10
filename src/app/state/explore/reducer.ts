@@ -5,7 +5,7 @@ import { State } from './state';
 
 const initialState: State = {
   entities: { },
-  layers: [],
+  layers: ['food', 'music', 'clubs', 'movies', 'specials'],
   layersEnabled: [],
   mapCenter: { lng: -98.58333, lat: 39.83333 } as mapboxgl.LngLat,
   mapZoom: 2,
