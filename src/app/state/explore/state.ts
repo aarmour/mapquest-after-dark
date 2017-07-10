@@ -8,6 +8,8 @@ export interface PoiDetails {
 
 export interface State {
   entities: { [id: string]: PoiDetails };
+  layers: string[];
+  layersEnabled: string[];
   mapCenter: mapboxgl.LngLat;
   mapZoom: number;
   selectedEntity: string | null;
