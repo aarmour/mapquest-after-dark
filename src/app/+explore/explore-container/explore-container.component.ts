@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { MdDialog } from '@angular/material';
+import { MdDialog, MdSnackBar, MdSnackBarRef } from '@angular/material';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -15,6 +15,7 @@ import { State } from '../../state/state';
 
 import { LayerDialogComponent } from '../layer-dialog/layer-dialog.component';
 import { MapMarkerElementFactoryService } from '../map-marker-element-factory.service';
+import { PoiDetailsSnackBarComponent } from '../poi-details-snack-bar/poi-details-snack-bar.component';
 
 @Component({
   selector: 'mad-explore-container',
@@ -27,10 +28,14 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
   geolocationPositionLngLat: Observable<mapboxgl.LngLat>;
   mapCenter: Observable<mapboxgl.LngLat>;
   mapZoom: Observable<number>;
+  snackBarRef: MdSnackBarRef<any>;
+
   routeParamsSubscription: Subscription;
+  showPoiDetailsSubscription: Subscription;
 
   constructor(
     private dialog: MdDialog,
+    private snackBar: MdSnackBar,
     private markerElementFactory: MapMarkerElementFactoryService,
     private route: ActivatedRoute,
     private store: Store<State>
@@ -44,6 +49,18 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
     this.mapCenter = this.store.select(exploreSelectors.mapCenter);
     this.mapZoom = this.store.select(exploreSelectors.mapZoom);
 
+    this.showPoiDetailsSubscription = this.store.select(exploreSelectors.selectedEntityWithShowPoiDetails)
+      .subscribe(state => {
+        if (this.snackBarRef) {
+          this.snackBarRef.dismiss();
+        }
+
+        if (state.showPoiDetails && state.entity) {
+          this.snackBarRef = this.snackBar.openFromComponent(PoiDetailsSnackBarComponent);
+          this.snackBarRef.instance.name = state.entity.name;
+        }
+      });
+
     this.routeParamsSubscription = this.route.paramMap
       .filter((params: ParamMap) => params.get('x') !== null && params.get('y') !== null && params.get('z') !== null)
       .map((params: ParamMap) =>
@@ -55,7 +72,12 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy() {
+    if (this.snackBarRef) {
+      this.snackBarRef.dismiss();
+    }
+
     this.routeParamsSubscription.unsubscribe();
+    this.showPoiDetailsSubscription.unsubscribe();
   }
 
   onMapMoveend($event) {
