@@ -1,8 +1,9 @@
 export interface PoiDetails {
   id: string;
   name: string;
-  displayAddress: string;
-  thumbnailURL: string;
+  description?: string;
+  displayAddress?: string;
+  thumbnailURL?: string;
 }
 
 export interface State {

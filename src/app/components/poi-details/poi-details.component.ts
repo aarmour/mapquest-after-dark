@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class PoiDetailsComponent {
 
   @Input() name: string;
+  @Input() description: string;
 
   constructor() { }
 
