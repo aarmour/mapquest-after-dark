@@ -28,10 +28,12 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
 
   geolocationMarker: ElementRef;
   geolocationPositionLngLat: Observable<mapboxgl.LngLat>;
+  layerButtons = [];
   mapCenter: Observable<mapboxgl.LngLat>;
   mapZoom: Observable<number>;
   snackBarRef: MdSnackBarRef<any>;
 
+  layerButtonsSubscription: Subscription;
   routeParamsSubscription: Subscription;
   showPoiDetailsSubscription: Subscription;
 
@@ -50,6 +52,9 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
       .filter((lngLat: mapboxgl.LngLat) => lngLat !== null);
     this.mapCenter = this.store.select(exploreSelectors.mapCenter);
     this.mapZoom = this.store.select(exploreSelectors.mapZoom);
+
+    this.layerButtonsSubscription = this.store.select(exploreSelectors.layerButtons)
+      .subscribe(layerButtons => this.layerButtons = layerButtons);
 
     this.showPoiDetailsSubscription = this.store.select(exploreSelectors.selectedEntityWithShowPoiDetails)
       .subscribe(state => {
@@ -79,6 +84,7 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
       this.snackBarRef.dismiss();
     }
 
+    this.layerButtonsSubscription.unsubscribe();
     this.routeParamsSubscription.unsubscribe();
     this.showPoiDetailsSubscription.unsubscribe();
   }
@@ -90,7 +96,7 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
   }
 
   openLayersDialog() {
-    this.dialog.open(LayerDialogComponent);
+    this.dialog.open(LayerDialogComponent, { data: { layerButtons: this.layerButtons } });
   }
 
 }

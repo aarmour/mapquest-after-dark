@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'mad-layer-selection-menu',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layer-selection-menu.component.scss']
 })
 export class LayerSelectionMenuComponent implements OnInit {
+
+  @Input() buttons;
 
   constructor() { }
 
