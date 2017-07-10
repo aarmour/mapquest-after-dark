@@ -11,3 +11,8 @@ export const mapCenter = createSelector(explore, (state: ExploreState) => state.
 export const mapZoom = createSelector(explore, (state: ExploreState) => state.mapZoom);
 
 export const mapExtent = createSelector(mapCenter, mapZoom, (center, zoom) => ({ center, zoom }));
+
+export const showPoiDetails = createSelector(explore, (state: ExploreState) => state.showPoiDetails);
+
+export const selectedEntityWithShowPoiDetails = createSelector(explore, (state: ExploreState) =>
+  Object.assign({ }, { entity: state.entities[state.selectedEntity], showPoiDetails: state.showPoiDetails }));

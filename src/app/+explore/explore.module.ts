@@ -9,6 +9,7 @@ import { ExploreContainerComponent } from './explore-container/explore-container
 import { LayerSelectionMenuComponent } from './layer-selection-menu/layer-selection-menu.component';
 import { LayerDialogComponent } from './layer-dialog/layer-dialog.component';
 import { MapMarkerElementFactoryService } from './map-marker-element-factory.service';
+import { PoiDetailsSnackBarComponent } from './poi-details-snack-bar/poi-details-snack-bar.component';
 
 @NgModule({
   imports: [
@@ -21,12 +22,14 @@ import { MapMarkerElementFactoryService } from './map-marker-element-factory.ser
     ExploreContainerComponent,
     LayerDialogComponent,
     LayerSelectionMenuComponent,
+    PoiDetailsSnackBarComponent,
   ],
   providers: [
     MapMarkerElementFactoryService
   ],
   entryComponents: [
-    LayerDialogComponent
+    LayerDialogComponent,
+    PoiDetailsSnackBarComponent
   ]
 })
 export class ExploreModule { }
