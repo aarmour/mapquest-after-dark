@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MdDialog, MdSnackBar, MdSnackBarRef } from '@angular/material';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -23,6 +23,8 @@ import { PoiDetailsSnackBarComponent } from '../poi-details-snack-bar/poi-detail
   styleUrls: ['./explore-container.component.scss']
 })
 export class ExploreContainerComponent implements OnDestroy, OnInit {
+
+  @ViewChild('map') mapEl: ElementRef;
 
   geolocationMarker: ElementRef;
   geolocationPositionLngLat: Observable<mapboxgl.LngLat>;
@@ -56,7 +58,8 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
         }
 
         if (state.showPoiDetails && state.entity) {
-          this.snackBarRef = this.snackBar.openFromComponent(PoiDetailsSnackBarComponent);
+          this.snackBarRef = this.snackBar.openFromComponent(PoiDetailsSnackBarComponent, { extraClasses: ['mad-explore-snack-bar'] });
+          this.snackBarRef.instance.snackBarRef = this.snackBarRef;
           this.snackBarRef.instance.name = state.entity.name;
         }
       });

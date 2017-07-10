@@ -13,4 +13,6 @@ $mad-app-layout-toolbar-height: 56px;
 
 .toolbar {
   height: $mad-app-layout-toolbar-height;
+  // Hack to ensure that the toolbar is above any snack bar
+  z-index: 10000;
 }

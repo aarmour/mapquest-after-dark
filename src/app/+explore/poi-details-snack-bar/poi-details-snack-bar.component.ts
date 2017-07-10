@@ -1,17 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { Store } from '@ngrx/store';
+
+import { HidePoiDetailsAction } from '../../state/explore/actions';
+import { State } from '../../state/state';
 
 @Component({
   selector: 'mad-poi-details-snack-bar',
   templateUrl: './poi-details-snack-bar.component.html',
   styleUrls: ['./poi-details-snack-bar.component.scss']
 })
-export class PoiDetailsSnackBarComponent implements OnInit {
+export class PoiDetailsSnackBarComponent {
 
   @Input() name: string;
 
-  constructor() { }
+  constructor(private store: Store<State>) { }
 
-  ngOnInit() {
+  onDismiss() {
+    this.store.dispatch(new HidePoiDetailsAction());
   }
 
 }
