@@ -1,11 +1,14 @@
-<div>
-  <button *ngIf="isAuthenticated | async; else anonymous" md-raised-button (click)="logout()">
-    <span>Sign out</span>
-  </button>
-
-  <ng-template #anonymous>
-    <button class="google" md-raised-button (click)="login()">
-      <span>Sign in with Google</span>
-    </button>
-  </ng-template>
+<div class="logo">
+  <span class="mq-logo"></span>
+  <h1>AFT<span class="offset">E</span>R <span class="offset">D</span>ARK</h1>
 </div>
+
+<button *ngIf="isAuthenticated | async; else anonymous" md-raised-button (click)="logout()">
+  <span>Sign out</span>
+</button>
+
+<ng-template #anonymous>
+  <button class="google" md-raised-button (click)="login()">
+    <span>Sign in with Google</span>
+  </button>
+</ng-template>
