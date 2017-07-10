@@ -19,7 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "mad",
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        "../node_modules/font-awesome/scss/font-awesome.scss"
       ],
       "scripts": [
         "../node_modules/mapbox-gl/dist/mapbox-gl.js"
