@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ComponentsModule } from '../components/components.module';
 
@@ -10,6 +11,7 @@ import { UserSettingsContainerComponent } from './user-settings-container/user-s
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     ComponentsModule,
     UserRoutingModule
   ],

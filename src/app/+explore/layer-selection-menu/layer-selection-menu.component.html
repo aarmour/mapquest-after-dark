@@ -1,50 +1,10 @@
 <md-grid-list cols="3" rowHeight="1:1">
-  <md-grid-tile>
+  <md-grid-tile *ngFor="let button of buttons">
     <div class="button-container">
-      <button md-icon-button>
-        <md-icon color="primary">android</md-icon>
+      <button md-icon-button (click)="onClick(button.layer)">
+        <md-icon color="primary">{{button.icon}}</md-icon>
       </button>
-      <span>FPO</span>
-    </div>
-  </md-grid-tile>
-  <md-grid-tile>
-    <div class="button-container">
-      <button md-icon-button>
-        <md-icon color="primary">local_bar</md-icon>
-      </button>
-      <span>FPO</span>
-    </div>
-  </md-grid-tile>
-  <md-grid-tile>
-    <div class="button-container">
-      <button md-icon-button>
-        <md-icon color="primary">build</md-icon>
-      </button>
-      <span>FPO</span>
-    </div>
-  </md-grid-tile>
-  <md-grid-tile>
-    <div class="button-container">
-      <button md-icon-button>
-        <md-icon color="primary">casino</md-icon>
-      </button>
-      <span>FPO</span>
-    </div>
-  </md-grid-tile>
-  <md-grid-tile>
-    <div class="button-container">
-      <button md-icon-button>
-        <md-icon color="primary">local_dining</md-icon>
-      </button>
-      <span>FPO</span>
-    </div>
-  </md-grid-tile>
-  <md-grid-tile>
-    <div class="button-container">
-      <button md-icon-button>
-        <md-icon color="primary">local_cafe</md-icon>
-      </button>
-      <span>FPO</span>
+      <span>{{button.label}}</span>
     </div>
   </md-grid-tile>
 </md-grid-list>

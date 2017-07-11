@@ -1,3 +1,16 @@
 <md-toolbar>
   <mad-back-toolbar-button text="More" link="/more"></mad-back-toolbar-button>
 </md-toolbar>
+<md-nav-list>
+  <md-list-item>
+    <span>Audience:</span>
+    <span class="list-item-spacer"></span>
+    <form #form="ngForm" novalidate>
+      <md-select [(ngModel)]="selectedAudience" name="audience">
+        <md-option *ngFor="let audience of audiences" [value]="audience.value">
+          {{audience.viewValue}}
+        </md-option>
+      </md-select>
+    </form>
+  </md-list-item>
+</md-nav-list>

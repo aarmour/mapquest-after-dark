@@ -3,9 +3,14 @@ const { equals, insert, mergeDeepRight, reject, uniq } = require('ramda');
 import * as explore from './actions';
 import { State } from './state';
 
+const layersForAudience = {
+  pg13: ['food', 'music', 'clubs', 'movies', 'specials'],
+  r: ['bars', 'liquor', 'dispensaries', 'stripclubs', 'food', 'music', 'clubs', 'movies', 'specials']
+}
+
 const initialState: State = {
   entities: { },
-  layers: [],
+  layers: layersForAudience.pg13,
   layersEnabled: [],
   mapCenter: { lng: -98.58333, lat: 39.83333 } as mapboxgl.LngLat,
   mapZoom: 2,
@@ -18,6 +23,11 @@ export function reducer(state: State = initialState, action: explore.Actions): S
     case explore.SET_MAP_EXTENT: {
       const { payload } = action as explore.SetMapExtentAction;
       return mergeDeepRight(state, { mapCenter: payload.center, mapZoom: payload.zoom });
+    }
+
+    case explore.SET_AVAILABLE_LAYERS: {
+      const { payload } = action as explore.SetAvailableLayersAction;
+      return Object.assign({ }, state, { layers: layersForAudience[payload.audience] });
     }
 
     case explore.ENABLE_LAYER: {

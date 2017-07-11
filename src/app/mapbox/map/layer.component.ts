@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { SetMap } from '../metadata/set-map';
 import { MapboxService } from '../mapbox.service';
@@ -7,10 +7,11 @@ import { MapboxService } from '../mapbox.service';
   selector: 'mb-layer',
   template: ''
 })
-export class LayerComponent implements SetMap {
+export class LayerComponent implements OnChanges, SetMap {
 
   private map: mapboxgl.Map;
 
+  @Input() filter: string[];
   @Input() id: string;
   @Input() layout: Object = { };
   @Input() paint: Object = { };
@@ -18,6 +19,12 @@ export class LayerComponent implements SetMap {
   @Input() type: ('symbol') = 'symbol';
 
   constructor(private mapbox: MapboxService) { }
+
+  ngOnChanges() {
+    if (this.filter && this.map) {
+      this.map.setFilter(this.id, this.filter);
+    }
+  }
 
   mbSetMap(map: mapboxgl.Map) {
     this.map = map;

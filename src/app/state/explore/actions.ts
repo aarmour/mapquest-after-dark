@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 import { type } from '../util';
-import { PoiDetails } from './state';
+import { Audience, PoiDetails } from './state';
 
 /**
  * Map
@@ -18,6 +18,14 @@ export class SetMapExtentAction implements Action {
 /**
  * Layers
  */
+
+export const SET_AVAILABLE_LAYERS = type('[Explore] Set Available Layers');
+
+export class SetAvailableLayersAction implements Action {
+  type = SET_AVAILABLE_LAYERS;
+
+  constructor(public payload: { audience: Audience }) { }
+}
 
 export const ENABLE_LAYER = type('[Explore] Enable Layer');
 
@@ -55,6 +63,7 @@ export class HidePoiDetailsAction implements Action {
 
 export type Actions =
   | SetMapExtentAction
+  | SetAvailableLayersAction
   | EnableLayerAction
   | DisableLayerAction
   | ShowPoiDetailsAction

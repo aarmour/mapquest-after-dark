@@ -1,3 +1,8 @@
+export enum Audience {
+  pg13,
+  r
+}
+
 export interface PoiDetails {
   id: string;
   name: string;

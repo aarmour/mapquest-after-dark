@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import { ComponentsModule } from '../components/components.module';
 import { MapboxModule } from '../mapbox/mapbox.module';
@@ -14,6 +15,7 @@ import { PoiDetailsSnackBarComponent } from './poi-details-snack-bar/poi-details
 @NgModule({
   imports: [
     CommonModule,
+    HttpModule,
     ComponentsModule,
     MapboxModule,
     ExploreRoutingModule

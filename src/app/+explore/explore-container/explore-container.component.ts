@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Http, Response } from '@angular/http';
 import { MdDialog, MdSnackBar, MdSnackBarRef } from '@angular/material';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -10,7 +11,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 import * as exploreSelectors from '../../state/explore/selectors';
 import * as geolocationSelectors from '../../state/geolocation/selectors';
-import { SetMapExtentAction } from '../../state/explore/actions';
+import { SetMapExtentAction, ShowPoiDetailsAction } from '../../state/explore/actions';
+import { PoiDetails } from '../../state/explore/state';
 import { State } from '../../state/state';
 
 import { LayerDialogComponent } from '../layer-dialog/layer-dialog.component';
@@ -28,14 +30,19 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
 
   geolocationMarker: ElementRef;
   geolocationPositionLngLat: Observable<mapboxgl.LngLat>;
+  layerButtons = [];
+  layerData: Observable<any>;
+  layerFilter: Observable<any>;
   mapCenter: Observable<mapboxgl.LngLat>;
   mapZoom: Observable<number>;
   snackBarRef: MdSnackBarRef<any>;
 
+  layerButtonsSubscription: Subscription;
   routeParamsSubscription: Subscription;
   showPoiDetailsSubscription: Subscription;
 
   constructor(
+    private http: Http,
     private dialog: MdDialog,
     private snackBar: MdSnackBar,
     private markerElementFactory: MapMarkerElementFactoryService,
@@ -46,10 +53,17 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
   ngOnInit() {
     this.geolocationMarker = this.markerElementFactory.createGeolocationMarker();
 
+    this.layerData = this.http.get('/assets/data/features.geojson')
+      .map((response: Response) => response.json());
+
     this.geolocationPositionLngLat = this.store.select(geolocationSelectors.lastPositionLngLat)
       .filter((lngLat: mapboxgl.LngLat) => lngLat !== null);
+    this.layerFilter = this.store.select(exploreSelectors.layersEnabledFilter);
     this.mapCenter = this.store.select(exploreSelectors.mapCenter);
     this.mapZoom = this.store.select(exploreSelectors.mapZoom);
+
+    this.layerButtonsSubscription = this.store.select(exploreSelectors.layerButtons)
+      .subscribe(layerButtons => this.layerButtons = layerButtons);
 
     this.showPoiDetailsSubscription = this.store.select(exploreSelectors.selectedEntityWithShowPoiDetails)
       .subscribe(state => {
@@ -79,8 +93,26 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
       this.snackBarRef.dismiss();
     }
 
+    this.layerButtonsSubscription.unsubscribe();
     this.routeParamsSubscription.unsubscribe();
     this.showPoiDetailsSubscription.unsubscribe();
+  }
+
+  onMapClick($event) {
+    if ($event.lngLat) {
+      const map = $event.target as mapboxgl.Map;
+      const features = map.queryRenderedFeatures($event.point);
+      if (features.length) {
+        const feature = features[0];
+        try {
+          const properties = feature.properties as any;
+          const name = JSON.parse(properties.name).value;
+          this.store.dispatch(new ShowPoiDetailsAction({ name } as PoiDetails));
+        } catch (e) {
+          console.warn('could not handle feature:', e.stack);
+        }
+      }
+    }
   }
 
   onMapMoveend($event) {
@@ -90,7 +122,7 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
   }
 
   openLayersDialog() {
-    this.dialog.open(LayerDialogComponent);
+    this.dialog.open(LayerDialogComponent, { data: { layerButtons: this.layerButtons } });
   }
 
 }
