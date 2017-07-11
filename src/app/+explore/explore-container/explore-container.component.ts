@@ -31,6 +31,7 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
   geolocationPositionLngLat: Observable<mapboxgl.LngLat>;
   layerButtons = [];
   layerData: Observable<any>;
+  layerFilter: Observable<any>;
   mapCenter: Observable<mapboxgl.LngLat>;
   mapZoom: Observable<number>;
   snackBarRef: MdSnackBarRef<any>;
@@ -56,6 +57,7 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
 
     this.geolocationPositionLngLat = this.store.select(geolocationSelectors.lastPositionLngLat)
       .filter((lngLat: mapboxgl.LngLat) => lngLat !== null);
+    this.layerFilter = this.store.select(exploreSelectors.layersEnabledFilter);
     this.mapCenter = this.store.select(exploreSelectors.mapCenter);
     this.mapZoom = this.store.select(exploreSelectors.mapZoom);
 

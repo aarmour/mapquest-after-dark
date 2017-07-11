@@ -1,7 +1,7 @@
 <md-grid-list cols="3" rowHeight="1:1">
   <md-grid-tile *ngFor="let button of buttons">
     <div class="button-container">
-      <button md-icon-button>
+      <button md-icon-button (click)="onClick(button.layer)">
         <md-icon color="primary">{{button.icon}}</md-icon>
       </button>
       <span>{{button.label}}</span>

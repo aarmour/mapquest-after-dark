@@ -7,7 +7,7 @@
 </md-toolbar>
 <mb-map #map mb-style="mapbox://styles/mapbox/dark-v9" [center]="mapCenter | async" [zoom]="mapZoom | async" (moveend)="onMapMoveend($event)">
   <mb-geojson-source mb-id="layers" [data]="layerData | async"></mb-geojson-source>
-  <mb-layer id="layers" source="layers" type="circle" [paint]="{ 'circle-radius': 5, 'circle-color': '#a5cc00' }"></mb-layer>
+  <mb-layer id="layers" source="layers" type="circle" [paint]="{ 'circle-radius': 5, 'circle-color': '#a5cc00' }" [filter]="layerFilter | async"></mb-layer>
   <mb-marker
     [lngLat]="geolocationPositionLngLat | async"
     [element]="geolocationMarker"
