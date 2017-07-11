@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'mad-layer-selection-menu',
@@ -8,10 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class LayerSelectionMenuComponent implements OnInit {
 
   @Input() buttons;
+  @Output() enableLayer: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClick(layer) {
+    this.enableLayer.emit(layer);
   }
 
 }

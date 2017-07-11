@@ -23,7 +23,7 @@ const layerIcons = {
   bars: 'mood',
   liquor: 'local_bar',
   dispensaries: 'smoking_rooms',
-  'stripclubs': 'brightness_3',
+  stripclubs: 'brightness_3',
   food: 'restaurant',
   music: 'music_note',
   clubs: 'headset',
@@ -34,4 +34,20 @@ const layerIcons = {
 const iconForLayer = (layer: string) => layerIcons[layer];
 
 export const layerButtons = createSelector(layers, (state) =>
-  state.map(layer => ({ label: capitalize(layer), icon: iconForLayer(layer) })));
+  state.map(layer => ({ layer, label: capitalize(layer), icon: iconForLayer(layer) })));
+
+export const layersEnabled = createSelector(explore, (state: ExploreState) => state.layersEnabled);
+
+const layerNames = {
+  bars: 'Bars',
+  liquor: 'Liquor Stores',
+  dispensaries: 'Dispensaries',
+  stripclubs: 'Strip Clubs',
+  food: 'Food',
+  music: 'Music Venues',
+  clubs: 'Clubs',
+  movies: 'Movie Theaters'
+}
+
+export const layersEnabledFilter = createSelector(layersEnabled, (layers) =>
+  layers.length ? ['in', 'madLayerName', ...layers.map(layer => layerNames[layer])] : ['in', 'madLayerName', 'noop']);
