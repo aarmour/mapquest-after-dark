@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Http, Response } from '@angular/http';
 import { MdDialog, MdSnackBar, MdSnackBarRef } from '@angular/material';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -29,6 +30,7 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
   geolocationMarker: ElementRef;
   geolocationPositionLngLat: Observable<mapboxgl.LngLat>;
   layerButtons = [];
+  layerData: Observable<any>;
   mapCenter: Observable<mapboxgl.LngLat>;
   mapZoom: Observable<number>;
   snackBarRef: MdSnackBarRef<any>;
@@ -38,6 +40,7 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
   showPoiDetailsSubscription: Subscription;
 
   constructor(
+    private http: Http,
     private dialog: MdDialog,
     private snackBar: MdSnackBar,
     private markerElementFactory: MapMarkerElementFactoryService,
@@ -47,6 +50,9 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     this.geolocationMarker = this.markerElementFactory.createGeolocationMarker();
+
+    this.layerData = this.http.get('/assets/data/features.geojson')
+      .map((response: Response) => response.json());
 
     this.geolocationPositionLngLat = this.store.select(geolocationSelectors.lastPositionLngLat)
       .filter((lngLat: mapboxgl.LngLat) => lngLat !== null);

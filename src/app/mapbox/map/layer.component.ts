@@ -11,6 +11,7 @@ export class LayerComponent implements SetMap {
 
   private map: mapboxgl.Map;
 
+  @Input() filter: string[];
   @Input() id: string;
   @Input() layout: Object = { };
   @Input() paint: Object = { };
@@ -18,6 +19,10 @@ export class LayerComponent implements SetMap {
   @Input() type: ('symbol') = 'symbol';
 
   constructor(private mapbox: MapboxService) { }
+
+  ngOnChanges() {
+
+  }
 
   mbSetMap(map: mapboxgl.Map) {
     this.map = map;
