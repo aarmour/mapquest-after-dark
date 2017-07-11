@@ -3,20 +3,19 @@
 </md-toolbar>
 
 <ul class="friends-list">
-  <li *ngFor="let friend of mockFriends" class="friend">
-    <span class="friend-info">
-      <img mad-avatar [src]="friend.avatar" class="friend-avatar">
-      <p>{{friend.name}}</p>
-    </span>
-    <span class="friend-check">
+  <li *ngFor="let friend of mockFriends">
+    <div class="friend">
+      <span class="friend-info">
+        <img mad-avatar [src]="friend.avatar" class="friend-avatar">
+        <p>{{friend.name}}</p>
+      </span>
       <md-checkbox color="primary"></md-checkbox>
-    </span>
+    </div>
   </li>
 </ul>
 
 <div class="share-with-all">
-  <md-checkbox color="primary"></md-checkbox>
-  <span class="label">Share location with everyone</span>
+  <md-checkbox color="primary">Share location with everyone</md-checkbox>
 </div>
 
 <div class="share-container">

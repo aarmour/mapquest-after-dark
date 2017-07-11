@@ -1,5 +1,24 @@
-// Override Material Design styles. Try to minimize these.
+/* ==========================================================================
+   Override Material Design styles. Try to minimize these.
+   ========================================================================== */
+
+// Dialog
+
 md-dialog-container {
   background: black !important;
+  color: #a5cc00 !important;
+}
+
+// Checkbox
+
+.mat-checkbox-inner-container {
+  background-color: black !important;
+}
+
+.mat-checkbox-frame {
+  border-color: #a5cc00 !important;
+}
+
+.mat-checkbox-label {
   color: #a5cc00 !important;
 }
