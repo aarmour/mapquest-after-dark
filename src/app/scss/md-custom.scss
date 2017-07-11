@@ -9,6 +9,12 @@ md-dialog-container {
   color: #a5cc00 !important;
 }
 
+// List
+
+md-list-item {
+  color: #a5cc00 !important;
+}
+
 // Checkbox
 
 .mat-checkbox-inner-container {
@@ -21,4 +27,16 @@ md-dialog-container {
 
 .mat-checkbox-label {
   color: #a5cc00 !important;
+}
+
+// Select
+
+.mat-select-trigger,
+.mat-select-value,
+.mat-select-arrow {
+  color: #a5cc00 !important;
+}
+
+.mat-select-underline {
+  background-color: #a5cc00 !important;
 }

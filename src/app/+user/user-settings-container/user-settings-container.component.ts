@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSettingsContainerComponent implements OnInit {
 
+  selectedAudience = 'pg13';
+  audiences = [{ value: 'pg13', viewValue: 'PG-13' }, { value: 'r', viewValue: 'R' }];
+
   constructor() { }
 
   ngOnInit() {
