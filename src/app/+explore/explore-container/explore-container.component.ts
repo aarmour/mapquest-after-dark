@@ -11,7 +11,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 import * as exploreSelectors from '../../state/explore/selectors';
 import * as geolocationSelectors from '../../state/geolocation/selectors';
-import { SetMapExtentAction } from '../../state/explore/actions';
+import { SetMapExtentAction, ShowPoiDetailsAction } from '../../state/explore/actions';
+import { PoiDetails } from '../../state/explore/state';
 import { State } from '../../state/state';
 
 import { LayerDialogComponent } from '../layer-dialog/layer-dialog.component';
@@ -95,6 +96,23 @@ export class ExploreContainerComponent implements OnDestroy, OnInit {
     this.layerButtonsSubscription.unsubscribe();
     this.routeParamsSubscription.unsubscribe();
     this.showPoiDetailsSubscription.unsubscribe();
+  }
+
+  onMapClick($event) {
+    if ($event.lngLat) {
+      const map = $event.target as mapboxgl.Map;
+      const features = map.queryRenderedFeatures($event.point);
+      if (features.length) {
+        const feature = features[0];
+        try {
+          const properties = feature.properties as any;
+          const name = JSON.parse(properties.name).value;
+          this.store.dispatch(new ShowPoiDetailsAction({ name } as PoiDetails));
+        } catch (e) {
+          console.warn('could not handle feature:', e.stack);
+        }
+      }
+    }
   }
 
   onMapMoveend($event) {
