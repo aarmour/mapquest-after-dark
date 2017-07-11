@@ -35,6 +35,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
   @Input() center: { lng: number, lat: number } = { lng: 0, lat: 0};
   @Input() zoom = 0;
 
+  @Output() click: EventEmitter<any> = new EventEmitter();
   @Output() move: EventEmitter<any> = new EventEmitter();
   @Output() moveend: EventEmitter<any> = new EventEmitter();
   @Output() movestart: EventEmitter<any> = new EventEmitter();
@@ -72,6 +73,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
     });
 
     this.mapbox.bindToOutputs(this.map, [
+      ['click', this.click],
       ['move', this.move],
       ['moveend', this.moveend],
       ['movestart', this.movestart]
