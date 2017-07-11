@@ -5,6 +5,7 @@ import { ComponentsModule } from '../components/components.module';
 
 import { GoRoutingModule } from './go-routing.module';
 import { GoContainerComponent } from './go-container/go-container.component';
+import { RideShareComponent } from './ride-share/ride-share.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { GoContainerComponent } from './go-container/go-container.component';
     ComponentsModule,
     GoRoutingModule
   ],
-  declarations: [GoContainerComponent]
+  declarations: [GoContainerComponent, RideShareComponent]
 })
 export class GoModule { }
