@@ -20,9 +20,13 @@ export const selectedEntityWithShowPoiDetails = createSelector(explore, (state: 
 export const layers = createSelector(explore, (state: ExploreState) => state.layers);
 
 const layerIcons = {
+  bars: 'mood',
+  liquor: 'local_bar',
+  dispensaries: 'smoking_rooms',
+  'stripclubs': 'brightness_3',
   food: 'restaurant',
   music: 'music_note',
-  clubs: 'volume_up',
+  clubs: 'headset',
   movies: 'local_movies',
   specials: 'attach_money'
 };
