@@ -4,6 +4,8 @@ import { CanActivate, CanLoad, ActivatedRouteSnapshot, Route, Router, RouterStat
 import '@ngrx/core/add/operator/select';
 import { Store } from '@ngrx/store';
 
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
 import { Observable } from 'rxjs/Observable';
 
